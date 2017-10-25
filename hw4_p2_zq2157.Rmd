@@ -1,0 +1,31 @@
+---
+title: "hw4_p2_zq2157"
+author: "Zhuyu Qiu"
+date: "10/25/2017"
+output: html_document
+---
+
+#Problem 2
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(readr)
+library(readxl)
+library(haven)
+library(janitor)
+library(lubridate)
+```
+
+```{r read }
+pols_month = read_csv("../data/fivethirtyeight_datasets/pols-month.csv") %>%
+  clean_names() %>%
+ mutate(date = lubridate::floor_date(mon, "month"),
+       president =ifelse(prez_dem == 0, "gop", "dem")) %>%
+  select(., -prez_dem, -prez_gop)
+
+gdp = read_csv("../data/fivethirtyeight_datasets/GDP.csv") %>%
+  clean_names() 
+
+
+total = full_join(gdp,pols_month, by = c("date")) 
+```
