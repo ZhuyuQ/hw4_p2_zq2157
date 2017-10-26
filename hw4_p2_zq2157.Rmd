@@ -29,3 +29,11 @@ gdp = read_csv("./GDP.csv") %>%
 
 total = full_join(gdp,pols_month, by = c("date")) 
 ```
+
+```{r plot}
+total %>%
+ggplot(aes(x = date, y = value, color=president)) +
+  geom_point() +
+  geom_path(aes(group=president))+
+  labs(title="Distribution of GDP value in two parties",y="GDP value")
+```
