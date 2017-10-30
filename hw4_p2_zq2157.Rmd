@@ -40,5 +40,5 @@ total %>%
   theme(legend.position = "bottom")
 ```
 
-  
+From the plot, we can see that the GDP value changes overtime, and it changes between and within the period contorled by democratic governors or republican governors.
 
