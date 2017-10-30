@@ -32,8 +32,13 @@ total = full_join(gdp,pols_month, by = c("date"))
 
 ```{r plot}
 total %>%
-ggplot(aes(x = date, y = value, color=president)) +
-  geom_point() +
-  geom_path(aes(group=president))+
-  labs(title="Distribution of GDP value in two parties",y="GDP value")
+  mutate(value = as.numeric(value)) %>% 
+  drop_na() %>% 
+ ggplot(aes(x = date, y = value, color=president)) +
+  geom_point() + geom_path(aes(group=president))+geom_smooth(se = FALSE)+
+  labs(title="Distribution of GDP value in two parties",y="GDP value")+
+  theme(legend.position = "bottom")
 ```
+
+  
+
