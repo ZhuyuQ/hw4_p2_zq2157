@@ -35,7 +35,7 @@ total %>%
   mutate(value = as.numeric(value)) %>% 
   drop_na() %>% 
  ggplot(aes(x = date, y = value, color=president)) +
-  geom_point() + geom_path(aes(group=president))+geom_smooth(se = FALSE)+
+  geom_point() + geom_path(aes(group=president))
   labs(title="Distribution of GDP value in two parties",y="GDP value")+
   theme(legend.position = "bottom")
 ```
